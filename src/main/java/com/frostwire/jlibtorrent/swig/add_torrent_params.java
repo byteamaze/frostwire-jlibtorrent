@@ -336,6 +336,10 @@ public class add_torrent_params {
     return new add_torrent_params(libtorrent_jni.add_torrent_params_create_instance_zero_storage(), true);
   }
 
+  public static add_torrent_params create_instance_piece_storage() {
+    return new add_torrent_params(libtorrent_jni.add_torrent_params_create_instance_piece_storage(), true);
+  }
+
   public void set_default_storage() {
     libtorrent_jni.add_torrent_params_set_default_storage(swigCPtr, this);
   }
@@ -346,6 +350,10 @@ public class add_torrent_params {
 
   public void set_zero_storage() {
     libtorrent_jni.add_torrent_params_set_zero_storage(swigCPtr, this);
+  }
+
+  public void set_piece_storage() {
+    libtorrent_jni.add_torrent_params_set_piece_storage(swigCPtr, this);
   }
 
   public static add_torrent_params read_resume_data(bdecode_node rd, error_code ec) {

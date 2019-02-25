@@ -1685,6 +1685,10 @@ namespace libtorrent {
     static libtorrent::add_torrent_params create_instance_zero_storage() {
         return libtorrent::add_torrent_params(libtorrent::zero_storage_constructor);
     }
+    
+    static libtorrent::add_torrent_params create_instance_piece_storage() {
+        return libtorrent::add_torrent_params(libtorrent::piece_storage_constructor);
+    }
 
     void set_default_storage()
     {
@@ -1699,6 +1703,11 @@ namespace libtorrent {
     void set_zero_storage()
     {
         $self->storage = libtorrent::zero_storage_constructor;
+    }
+    
+    void set_piece_storage()
+    {
+        $self->storage = libtorrent::piece_storage_constructor;
     }
 
     static libtorrent::add_torrent_params read_resume_data(libtorrent::bdecode_node const& rd, error_code& ec) {
